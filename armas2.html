@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batallón Alfa — Armamento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-neon: #00ff80;
+      --verde-oscuro: #0a1f0a;
+      --negro: #000;
+      --gris: #1c1c1c;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at center, #0a1f0a 0%, #000 100%);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        transparent 0%,
+        rgba(0,255,100,0.05) 2%,
+        transparent 4%
+      );
+      top: -50%;
+      left: -50%;
+      z-index: 0;
+      animation: scan 20s linear infinite;
+    }
+
+    body::after {
+      transform: rotate(90deg);
+      animation-duration: 30s;
+      opacity: 0.3;
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    
+    nav {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 15px;
+      border-bottom: 2px solid var(--verde-neon);
+      position: relative;
+      z-index: 2;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--verde-neon);
+      font-size: 1.1rem;
+      transition: 0.3s;
+      text-shadow: 0 0 10px var(--verde-neon);
+    }
+
+    nav a:hover {
+      color: white;
+      text-shadow: 0 0 20px var(--verde-neon);
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--verde-neon);
+      text-shadow: 0 0 20px var(--verde-neon);
+      letter-spacing: 4px;
+    }
+
+    
+    main {
+      width: 90%;
+      margin: 0 auto 50px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    
+    .arma {
+      background: rgba(20, 20, 20, 0.9);
+      border: 2px solid var(--verde-neon);
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,255,100,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .arma:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(0,255,100,0.4);
+    }
+
+    .arma img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--verde-neon);
+      box-shadow: 0 0 10px rgba(0,255,100,0.3);
+    }
+
+    .arma h2 {
+      color: var(--verde-neon);
+      margin: 10px 0 5px;
+      font-size: 1.3rem;
+    }
+
+    .arma p {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    
+    .stats {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .stat {
+      margin: 6px 0;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--verde-neon);
+      font-size: 0.8rem;
+      margin-bottom: 3px;
+    }
+
+    .bar {
+      background: rgba(255,255,255,0.1);
+      height: 8px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: var(--verde-neon);
+      width: 0%;
+      animation: fill 1s forwards;
+    }
+
+    @keyframes fill {
+      from { width: 0; }
+      to { width: var(--valor); }
+    }
+
+    
+    .btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: 2px solid var(--verde-neon);
+      background: transparent;
+      color: var(--verde-neon);
+      font-size: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px var(--verde-neon);
+    }
+
+    .btn:hover {
+      background: var(--verde-neon);
+      color: #000;
+      box-shadow: 0 0 20px var(--verde-neon);
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="main-nav" role="navigation" aria-label="Menú principal">
+        <a href="./juego.html" class="active">Inicio</a>
+        <a href="./armas2.html">Armamento</a>
+        <a href="./vehiculos.html">Vehículos</a>
+      </nav>
+  <header>
+    <h1>BATALLÓN ALFA — ARMAMENTO</h1>
+  </header>
+
+  <main>
+    <!-- 1 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 1.png" alt="AK-47">
+      <h2>AK-47</h2>
+      <p>Rifle de asalto confiable, ideal para combate medio.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:90%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:70%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:60%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 2 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 2.png" alt="M4A1">
+      <h2>M4A1</h2>
+      <p>Alta precisión, control y maniobrabilidad en combate urbano.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:80%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:85%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:50%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 3 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 3.png" alt="Desert Eagle">
+      <h2>Desert Eagle</h2>
+      <p>Pistola de alto calibre, devastadora a corta distancia.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:95%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:60%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:70%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 4 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 4.png" alt="Barrett .50">
+      <h2>Barrett .50</h2>
+      <p>Francotirador de potencia extrema y largo alcance.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:100%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:90%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:40%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 5 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 5.png" alt="MP5">
+      <h2>MP5</h2>
+      <p>Subfusil rápido y silencioso, ideal para infiltraciones.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:70%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:75%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:90%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 6 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 6.png" alt="SCAR-L">
+      <h2>SCAR-L</h2>
+      <p>Arma versátil con gran estabilidad y daño equilibrado.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:85%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:80%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:75%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 7 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 7.png" alt="Glock 19">
+      <h2>Glock 19</h2>
+      <p>Compacta, ligera y confiable en combate cercano.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:65%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:80%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:95%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 8 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 8.png" alt="FAMAS">
+      <h2>FAMAS</h2>
+      <p>Fusil francés de alta cadencia y diseño futurista.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:75%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:70%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:85%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 9 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 9.png" alt="SPAS-12">
+      <h2>SPAS-12</h2>
+      <p>Escopeta semiautomática devastadora a corta distancia.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:95%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:50%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:65%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+    <!-- 10 -->
+    <div class="arma">
+      <img src="./imagenesJuego/arma 10.png" alt="AWM">
+      <h2>AWM</h2>
+      <p>Francotirador legendario de precisión mortal.</p>
+      <div class="stats">
+        <div class="stat"><span>Poder</span><div class="bar"><div class="fill" style="--valor:100%;"></div></div></div>
+        <div class="stat"><span>Precisión</span><div class="bar"><div class="fill" style="--valor:95%;"></div></div></div>
+        <div class="stat"><span>Velocidad</span><div class="bar"><div class="fill" style="--valor:40%;"></div></div></div>
+      </div>
+      <button class="btn">Seleccionar</button>
+    </div>
+
+  </main>
+
+</body>
+</html>

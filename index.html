@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COMANDO — Guerra Táctica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f10;
+      --panel: #111315;
+      --accent: #2e7d32;
+      --accent-dark: #1b5e20;
+      --khaki: #bdb58a;
+      --muted: #9aa0a6;
+      --glass: rgba(255, 255, 255, 0.03);
+      --neon: rgba(13,240,122,0.18);
+    }
+
+    /* ---------------- reset / base ---------------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: #e6e6e6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* -------------- video full-screen -------------- */
+    .video-fondo {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3; /* behind everything */
+      filter: brightness(0.45) contrast(1.15) saturate(1.15);
+      transform: scale(1.02); /* tiny scale to avoid letterboxing edges */
+    }
+
+    /* green glow overlay (behind content, above video) */
+    .luz-verde {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 10% 10%, rgba(46,125,50,0.14), transparent 25%),
+                  radial-gradient(circle at 85% 80%, rgba(0,200,150,0.06), transparent 20%);
+      z-index: -2;
+      pointer-events: none;
+      animation: parpadeoVerde 3s infinite alternate;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes parpadeoVerde {
+      0% { opacity: 0.25; filter: blur(28px) saturate(1.1); }
+      50% { opacity: 0.6; filter: blur(40px) saturate(1.4); }
+      100% { opacity: 0.35; filter: blur(30px) saturate(1.05); }
+    }
+
+    /* subtle scanning lines overlay for HUD feel */
+    .scan-lines {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 100% 24px;
+      z-index: -1;
+      opacity: 0.06;
+      pointer-events: none;
+      animation: scanMove 20s linear infinite;
+    }
+    @keyframes scanMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 -480px; }
+    }
+
+    /* --------------- top navigation --------------- */
+    nav.top {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 14px;
+      background: rgba(0,0,0,0.35);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    nav.top a {
+      color: var(--khaki);
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: all .18s ease;
+      font-size: 0.98rem;
+      display: inline-block;
+    }
+
+    nav.top a:hover { background: rgba(46,125,50,0.12); color: white; transform: translateY(-4px); }
+    nav.top a.active { background: rgba(46,125,50,0.22); color: #fff; box-shadow: 0 6px 20px rgba(46,125,50,0.12); }
+
+    /* --------------- hero content ---------------- */
+    .hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem;
+      position: relative;
+      z-index: 4; /* above overlays */
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.14));
+      padding: 28px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 12px 40px rgba(2,6,2,0.55);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: #f1f7f2;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: 900;
+      text-shadow: 0 6px 24px rgba(13,240,122,0.06);
+    }
+    .lead {
+      color: var(--khaki);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      font-size: 1.15rem;
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .main-nav a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.6rem 1.1rem;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.45);
+      color: var(--khaki);
+      border: 1px solid rgba(255,255,255,0.03);
+      font-weight: 800;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+      transition: transform .12s ease, color .12s ease, background .12s ease;
+      font-size: 1rem;
+    }
+
+    .main-nav a:hover { transform: translateY(-3px); background: rgba(46,125,50,0.12); color: #fff; }
+    .main-nav a.active { background: rgba(46,125,50,0.20); color: #fff; box-shadow: 0 10px 30px rgba(46,125,50,0.08); }
+
+    .btn-iniciar {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      padding: 0.65rem 1.6rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(46, 125, 50, 0.45);
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+    .btn-iniciar:hover { transform: scale(1.04); background: var(--accent-dark); }
+
+    /* --------------- main panels ------------------ */
+    .container {
+      max-width: 1100px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 4;
+    }
+
+    .intro-panels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .panel {
+      background: linear-gradient(135deg, rgba(34,139,34,0.85), rgba(105,105,105,0.65), rgba(0,0,0,0.5));
+      padding: 1.25rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+      text-align: left;
+    }
+
+    .panel h2 { color: var(--khaki); margin-bottom: 0.5rem; font-size: 1.05rem; }
+    .panel p { color: var(--muted); font-size: 0.95rem; }
+
+    /* small responsive tweaks */
+    @media (max-width: 920px) {
+      .hero-inner { padding: 18px; }
+      .hero { padding: 2.5rem 1rem; }
+      nav.top { gap: 8px; padding: 8px; }
+    }
+
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 1.8rem; }
+      .lead { font-size: 1rem; }
+      .video-fondo { object-position: center 20%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- video background (full-screen) -->
+  <video autoplay muted loop playsinline class="video-fondo" aria-hidden="true">
+    <source src="./imagenesAlex/Marketing_video_Pippit_20250913135048.mp4" type="video/mp4">
+  </video>
+
+  <!-- overlays -->
+  <div class="luz-verde" aria-hidden="true"></div>
+  <div class="scan-lines" aria-hidden="true"></div>
+
+  
+
+  
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <h1>Batallón Alfa</h1>
+      <p class="lead">Toma el control del campo de batalla. Planifica, despliega y domina.</p>
+
+      <nav class="main-nav" role="navigation" aria-label="Menú sección">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="./armas2.html">Armamento</a>
+        <a href="./vehiculos.html">Vehículos</a>
+      </nav>
+
+      <button class="btn-iniciar" aria-label="Iniciar juego">Iniciar Juego</button>
+    </div>
+  </header>
+
+  <!-- content panels -->
+  <main class="container" role="main">
+    <section class="intro-panels" aria-labelledby="panel-title">
+      <div class="panel">
+        <h2 id="panel-title">Planificación</h2>
+        <p>Mapas tácticos, órdenes y control de unidades.</p>
+      </div>
+      <div class="panel">
+        <h2>Logística</h2>
+        <p>Gestiona armamento, suministros y vehículos.</p>
+      </div>
+      <div class="panel">
+        <h2>Operaciones</h2>
+        <p>Ejecuta misiones, despliega fuerzas y toma decisiones.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
