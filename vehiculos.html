@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMANDO — Vehículos</title>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="armas2.html">Armas</a></li>
+        <li><a href="vehiculos.html" class="activo">Vehículos</a></li>
+      </ul>
+    </nav>
+    <h1> LOS MEJORES CARROS DE COMBATE </h1>
+  </header>
+
+  <main>
+    <section id="vehiculos">
+      
+      <div class="vehiculo" data-vehiculo="tanque">
+        <img src="./imagenesJuego/vehiculo 1.png" alt="Tanque Titan">
+        <h2>Tanque Titan</h2>
+        <a href="#tanque-panel" class="btn-seleccionar">Seleccionar</a> 
+      </div>
+
+      <div class="vehiculo" data-vehiculo="camion">
+        <img src="./imagenesJuego/vehiculo 2.png" alt="Camión Blindado">
+        <h2>Camión Blindado</h2>
+        <a href="#camion-panel" class="btn-seleccionar">Seleccionar</a>
+      </div>
+
+      <div class="vehiculo" data-vehiculo="helicoptero">
+        <img src="./imagenesJuego/vehiculo 3.png" alt="Helicóptero Fénix">
+        <h2>Helicóptero Fénix</h2>
+        <a href="#helicoptero-panel" class="btn-seleccionar">Seleccionar</a>
+      </div>
+
+      <div class="vehiculo" data-vehiculo="jeep">
+        <img src="./imagenesJuego/vehiculo 4.png" alt="Jeep Águila">
+        <h2>Jeep Águila</h2>
+        <a href="#jeep-panel" class="btn-seleccionar">Seleccionar</a>
+      </div>
+
+      <div class="vehiculo" data-vehiculo="dron">
+        <img src="./imagenesJuego/vehiculo 5.png" alt="Dron Centinela">
+        <h2>Dron Centinela</h2>
+        <a href="#dron-panel" class="btn-seleccionar">Seleccionar</a>
+      </div>
+
+      <div class="vehiculo" data-vehiculo="raptor">
+        <img src="./imagenesJuego/vehiculo 6.png" alt="Tanque Raptor">
+        <h2>Tanque Raptor</h2>
+        <a href="#raptor-panel" class="btn-seleccionar">Seleccionar</a>
+      </div>
+    </section>
+
+    <section id="panel-derecho">
+      
+      <div class="vehiculo-panel" id="tanque-panel">
+        <div id="infoVehiculo">
+          <h2 id="nombreVehiculo">Tanque Titan</h2> 
+          <div class="barras">
+            <div><span>Velocidad</span><div class="barra"><div class="nivel" style="width: 40%;"></div></div></div>
+            <div><span>Defensa</span><div class="barra"><div class="nivel" style="width: 95%;"></div></div></div>
+            <div><span>Potencia</span><div class="barra"><div class="nivel" style="width: 90%;"></div></div></div>
+          </div>
+        </div>
+        <div class="panel-visual">
+          <img src="./imagenesJuego/vehiculos 1.png" alt="Tanque Titan Detalle" class="imagen-detalle">
+        </div>
+      </div>
+      
+      <div class="vehiculo-panel" id="camion-panel">
+        <div id="infoVehiculo">
+          <h2 id="nombreVehiculo">Camión Blindado</h2> 
+          <div class="barras">
+            <div><span>Velocidad</span><div class="barra"><div class="nivel" style="width: 60%;"></div></div></div>
+            <div><span>Defensa</span><div class="barra"><div class="nivel" style="width: 85%;"></div></div></div>
+            <div><span>Potencia</span><div class="barra"><div class="nivel" style="width: 75%;"></div></div></div>
+          </div>
+        </div>
+        <div class="panel-visual">
+          <img src="./imagenesJuego/vehiculos 5.png" alt="Camión Blindado Detalle" class="imagen-detalle">
+        </div>
+      </div>
+      
+      <div class="vehiculo-panel" id="helicoptero-panel">
+        <div id="infoVehiculo">
+          <h2 id="nombreVehiculo">Helicóptero Fénix</h2> 
+          <div class="barras">
+            <div><span>Velocidad</span><div class="barra"><div class="nivel" style="width: 90%;"></div></div></div>
+            <div><span>Defensa</span><div class="barra"><div class="nivel" style="width: 70%;"></div></div></div>
+            <div><span>Potencia</span><div class="barra"><div class="nivel" style="width: 80%;"></div></div></div>
+          </div>
+        </div>
+        <div class="panel-visual">
+          <img src="./imagenesJuego/vehiculos 6.png" alt="Helicóptero Fénix Detalle" class="imagen-detalle">
+        </div>
+      </div>
+      
+      <div class="vehiculo-panel" id="jeep-panel">
+        <div id="infoVehiculo">
+          <h2 id="nombreVehiculo">Jeep Águila</h2> 
+          <div class="barras">
+            <div><span>Velocidad</span><div class="barra"><div class="nivel" style="width: 85%;"></div></div></div>
+            <div><span>Defensa</span><div class="barra"><div class="nivel" style="width: 60%;"></div></div></div>
+            <div><span>Potencia</span><div class="barra"><div class="nivel" style="width: 70%;"></div></div></div>
+          </div>
+        </div>
+        <div class="panel-visual">
+          <img src="./imagenesJuego/vehiculos 3.png" alt="Jeep Águila Detalle" class="imagen-detalle">
+        </div>
+      </div>
+      
+      <div class="vehiculo-panel" id="dron-panel">
+        <div id="infoVehiculo">
+          <h2 id="nombreVehiculo">Dron Centinela</h2> 
+          <div class="barras">
+            <div><span>Velocidad</span><div class="barra"><div class="nivel" style="width: 95%;"></div></div></div>
+            <div><span>Defensa</span><div class="barra"><div class="nivel" style="width: 50%;"></div></div></div>
+            <div><span>Potencia</span><div class="barra"><div class="nivel" style="width: 60%;"></div></div></div>
+          </div>
+        </div>
+        <div class="panel-visual">
+          <img src="./imagenesJuego/vehiculos 2.png" alt="Dron Centinela Detalle" class="imagen-detalle">
+        </div>
+      </div>
+      
+      <div class="vehiculo-panel" id="raptor-panel">
+        <div id="infoVehiculo">
+          <h2 id="nombreVehiculo">Tanque Raptor</h2> 
+          <div class="barras">
+            <div><span>Velocidad</span><div class="barra"><div class="nivel" style="width: 55%;"></div></div></div>
+            <div><span>Defensa</span><div class="barra"><div class="nivel" style="width: 90%;"></div></div></div>
+            <div><span>Potencia</span><div class="barra"><div class="nivel" style="width: 95%;"></div></div></div>
+          </div>
+        </div>
+        <div class="panel-visual">
+          <img src="./imagenesJuego/vehiculos 4.png" alt="Tanque Raptor Detalle" class="imagen-detalle">
+        </div>
+      </div>
+      
+      <div class="vehiculo-panel" id="panel-inicial">
+        <div id="infoVehiculo">
+          <h2 id="nombreVehiculo">Selecciona un Vehículo</h2> 
+          <div class="barras">
+            <div><span>Velocidad</span><div class="barra"><div class="nivel" style="width: 0%;"></div></div></div>
+            <div><span>Defensa</span><div class="barra"><div class="nivel" style="width: 0%;"></div></div></div>
+            <div><span>Potencia</span><div class="barra"><div class="nivel" style="width: 0%;"></div></div></div>
+          </div>
+        </div>
+        <div class="panel-visual" style="align-items: center; justify-content: center; background: #1a1a1a;">
+          <p style="color:#00ff00; font-style: italic; text-align: center;">Haz clic en 'Seleccionar'</p>
+        </div>
+      </div>
+      
+    </section>
+  </main>
+
+  <div class="luz-inferior"></div>
+
+  <style>
+   
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #111;
+      padding: 15px 0;
+      text-align: center;
+      border-bottom: 3px solid #00ff00;
+      width: 100%;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a.activo { color: #00ff00; }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #00ff00;
+      transition: width 0.3s ease;
+    }
+    nav a:hover { color: #00ff00; }
+    nav a:hover::after,
+    nav a.activo::after { width: 100%; }
+    h1 {
+      color: #32cd32;
+      text-shadow: 0 0 20px #00ff00;
+      font-size: 1.8em;
+    }
+    main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 30px;
+      gap: 40px;
+    }
+    
+    #vehiculos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      flex: 2;
+    }
+    .vehiculo {
+      background-color: rgba(20, 20, 20, 0.8);
+      border: 2px solid #2e8b57;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 230px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .vehiculo:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px #00ff00;
+    }
+    .vehiculo img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    .btn-seleccionar {
+      display: block;
+      background: none;
+      border: 2px solid #00ff00;
+      color: #00ff00;
+      padding: 8px 16px;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-decoration: none; 
+    }
+    .btn-seleccionar:hover {
+      background-color: #00ff00;
+      color: #000;
+      box-shadow: 0 0 10px #00ff00;
+    }
+
+    
+    #panel-derecho {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      flex: 1.5;
+      position: relative; 
+      min-height: 500px; 
+    }
+
+    
+    .vehiculo-panel {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .vehiculo-panel:target {
+        display: block;
+        z-index: 10;
+    }
+
+    
+    .barras > div {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+    .barras span {
+        width: 80px;
+        margin-right: 10px;
+        text-align: right;
+        color: #90ee90;
+        font-size: 0.9em;
+    }
+    .barra {
+      background-color: #333;
+      border-radius: 10px;
+      height: 20px;
+      margin: 0;
+      width: calc(100% - 90px);
+      overflow: hidden;
+    }
+    .nivel {
+      height: 100%;
+      background-color: #00ff00;
+      transition: width 0.8s ease-in-out; 
+    }
+    
+  
+    .panel-visual { 
+      background-color: rgba(20, 20, 20, 0.7);
+      border: 2px solid #00ff00;
+      border-radius: 10px;
+      padding: 0; 
+      width: 90%;
+      box-shadow: 0 0 25px rgba(0,255,0,0.3);
+      min-height: 380px; 
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; 
+    }
+    
+    .imagen-detalle {
+        width: 100%; 
+        height: 100%;
+        object-fit: cover; 
+    }
+
+  
+    .luz-inferior {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 450px;
+      background: radial-gradient(ellipse at bottom, rgba(0,255,0,0.7) 0%, transparent 80%);
+      filter: blur(50px);
+      z-index: -1;
+      animation: brillar 3s ease-in-out infinite alternate;
+    }
+    @keyframes brillar {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 1.5em; }
+      main { flex-direction: column; padding: 15px; gap: 20px; }
+      #vehiculos { grid-template-columns: repeat(2, 1fr); flex: auto; gap: 15px; }
+      .vehiculo { width: 100%; padding: 10px; transform: none; box-shadow: none; }
+      #panel-derecho { flex: auto; width: 100%; }
+      .vehiculo-panel { position: static; } 
+      .panel-visual { width: 100%; padding: 15px; min-height: 250px; } 
+    }
+    @media (min-width: 769px) and (max-width: 1200px) {
+      main { padding: 20px; gap: 30px; }
+      #vehiculos { grid-template-columns: repeat(2, 1fr); flex: 1.5; gap: 20px; }
+      .vehiculo { width: auto; }
+      #panel-derecho { flex: 1; }
+    }
+  </style>
+</body>
+</html>
